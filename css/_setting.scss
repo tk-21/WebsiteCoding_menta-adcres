@@ -1,0 +1,37 @@
+$lightBlue: #e8edfc;
+$blue: #2852ab;
+$red: #e66969;
+
+@font-face {
+  font-family: "DINAlternate-Bold";
+  src: url("../font/DINAlternate-Bold.woff") format("woff");
+}
+
+// レイアウト幅
+$layout-width-inner: 1180px;
+
+// ブレークポイントを定義
+$breakpoints: (
+  "sp": "(max-width: 767px)",
+  "tab": "(max-width: #{$layout-width-inner - 1px})",
+  "pc": "(min-width: #{$layout-width-inner})",
+);
+
+// メディアクエリー
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+@function vw($px, $base: 1280) {
+  $value: ($px / $base) * 100vw;
+  @return $value;
+}
+
+@mixin flex($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
